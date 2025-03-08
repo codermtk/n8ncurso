@@ -3,16 +3,17 @@ structure:
   readme: README.md
   summary: SUMMARY.md
 redirects:
-  desafios/episodio-2: desafios/episodio-2.md
-  desafios/episodio-3: desafios/episodio-3.md
-  desafios/episodio-4: desafios/episodio-4.md
-  desafios/episodio-5: desafios/episodio-5.md
-  desafios/episodio-6: desafios/episodio-6.md
-  desafios/episodio-7: desafios/episodio-7.md
-  desafios/episodio-8: desafios/episodio-8.md
-  desafios/episodio-9: desafios/episodio-9.md
-  desafios/episodio-10: desafios/episodio-10.md
-  desafios/episodio-11: desafios/episodio-11.md
-  desafios/episodio-12: desafios/episodio-12.md
-  desafios/episodio-13: desafios/episodio-13.md
-  recursos/recursos-adicionales: recursos/recursos-adicionales.md 
+  introduccion: desafios/episodio-1.md
+  desafio-1: desafios/episodio-2.md
+  desafio-2: desafios/episodio-3.md
+  desafio-3: desafios/episodio-4.md
+  desafio-4: desafios/episodio-5.md
+  desafio-5: desafios/episodio-6.md
+  desafio-6: desafios/episodio-7.md
+  desafio-7: desafios/episodio-8.md
+  desafio-8: desafios/episodio-9.md
+  desafio-9: desafios/episodio-10.md
+  desafio-10: desafios/episodio-11.md
+  desafio-11: desafios/episodio-12.md
+  desafio-12: desafios/episodio-13.md
+  recursos: recursos/recursos-adicionales.md 

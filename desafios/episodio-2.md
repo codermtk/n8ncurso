@@ -1,63 +1,58 @@
-# Episodio 2: Cómo instalar n8n
+# Desafío 1: Instalación de n8n
 
-## Desafío
+![Imagen de n8n instalado](https://docs.n8n.io/assets/img/workflow-demo.a9a7bc2e.gif)
 
-Instala n8n en tu máquina local usando Docker. Una vez instalado, accede a la interfaz de usuario y toma una captura de pantalla del canvas vacío. Luego, desinstala n8n y vuelve a instalarlo usando npm. Escribe un breve párrafo comparando ambos procesos de instalación (por ejemplo, cuál te pareció más rápido o sencillo).
+## Objetivo
 
-## Instrucciones
+Instalar n8n en tu máquina local utilizando dos métodos diferentes: Docker y npm. Comparar ambos métodos para entender sus ventajas y desventajas.
 
-### Instalación con Docker
+## Contexto
 
-1. Asegúrate de tener Docker instalado en tu sistema. Si no lo tienes, puedes descargarlo desde [docker.com](https://www.docker.com/products/docker-desktop/).
+Antes de comenzar a crear flujos de trabajo, necesitas instalar n8n en tu entorno local. Existen diferentes métodos para hacerlo, cada uno con sus propias ventajas. En este desafío, explorarás dos de los métodos más comunes: Docker y npm.
 
-2. Abre una terminal y ejecuta el siguiente comando:
+## Requisitos
 
-```bash
-docker run -it --rm \
-  --name n8n \
-  -p 5678:5678 \
-  -v ~/.n8n:/home/node/.n8n \
-  n8nio/n8n
-```
+- Conocimientos básicos de línea de comandos
+- Docker instalado (para el primer método)
+- Node.js v16 o superior instalado (para el segundo método)
 
-3. Abre tu navegador y accede a `http://localhost:5678` para ver la interfaz de n8n.
+## El desafío
 
-4. Toma una captura de pantalla del canvas vacío.
+1. **Instalación con Docker**
+   - Investiga cómo ejecutar n8n utilizando Docker
+   - Instala n8n usando Docker
+   - Accede a la interfaz web de n8n
+   - Toma una captura de pantalla del canvas vacío
 
-5. Para detener y eliminar el contenedor, presiona `Ctrl+C` en la terminal donde está ejecutándose Docker.
+2. **Instalación con npm**
+   - Desinstala la versión de Docker
+   - Instala n8n globalmente usando npm
+   - Inicia n8n y accede a la interfaz web
+   - Toma otra captura de pantalla
 
-### Instalación con npm
+3. **Comparación**
+   - Escribe un breve párrafo comparando ambos métodos de instalación:
+     - ¿Cuál fue más rápido?
+     - ¿Cuál fue más sencillo?
+     - ¿Qué ventajas y desventajas tiene cada método?
+     - ¿Cuál preferirías usar en el futuro y por qué?
 
-1. Asegúrate de tener Node.js instalado (versión 16 o superior). Puedes descargarlo desde [nodejs.org](https://nodejs.org/).
+## Pistas
 
-2. Abre una terminal y ejecuta el siguiente comando:
-
-```bash
-npm install n8n -g
-```
-
-3. Una vez instalado, inicia n8n con:
-
-```bash
-n8n start
-```
-
-4. Abre tu navegador y accede a `http://localhost:5678` para ver la interfaz de n8n.
-
-5. Para detener n8n, presiona `Ctrl+C` en la terminal donde está ejecutándose.
+- Para Docker, necesitarás usar el comando `docker run` con los parámetros adecuados
+- Para npm, el comando principal es `npm install n8n -g`
+- La interfaz web de n8n suele estar disponible en `http://localhost:5678`
+- Recuerda que Docker aísla la aplicación en un contenedor, mientras que npm la instala directamente en tu sistema
 
 ## Entrega
 
-Para completar este desafío, debes:
+Para completar este desafío, debes entregar:
 
-1. Adjuntar la captura de pantalla del canvas vacío de n8n.
-2. Escribir un párrafo comparando ambos métodos de instalación, mencionando:
-   - Cuál fue más rápido
-   - Cuál fue más sencillo
-   - Ventajas y desventajas de cada método
-   - Tu método preferido y por qué
+1. Captura de pantalla del canvas vacío de n8n instalado con Docker
+2. Captura de pantalla del canvas vacío de n8n instalado con npm
+3. Tu análisis comparativo de ambos métodos de instalación (300-400 palabras)
 
-## Recursos adicionales
+## Recursos
 
 - [Documentación oficial de instalación de n8n](https://docs.n8n.io/hosting/)
 - [Guía de Docker para principiantes](https://docs.docker.com/get-started/)

@@ -4,18 +4,19 @@
 
 ## Desafíos
 
-* [Episodio 2: Cómo instalar n8n](desafios/episodio-2.md)
-* [Episodio 3: Introducción a la interfaz de usuario de n8n](desafios/episodio-3.md)
-* [Episodio 4: Conceptos Fundamentales y Fundamentos de Construcción n8n](desafios/episodio-4.md)
-* [Episodio 5: Profundizando en los Triggers](desafios/episodio-5.md)
-* [Episodio 6: Profundizando en nodos de Data](desafios/episodio-6.md)
-* [Episodio 7: Nodos de Lógica (Flow)](desafios/episodio-7.md)
-* [Episodio 8: Nodos Core](desafios/episodio-8.md)
-* [Episodio 9: Juntando todo a la vez](desafios/episodio-9.md)
-* [Episodio 10: Nodos de IA 1: Intro y Chains](desafios/episodio-10.md)
-* [Episodio 11: Nodos de IA 2: Agentes, Intro Memoria, Intro Herramientas](desafios/episodio-11.md)
-* [Episodio 12: Nodos de IA 3: RAG y Vector Stores](desafios/episodio-12.md)
-* [Episodio 13: Nodos In App](desafios/episodio-13.md)
+* [Introducción a n8n vs Make vs Zapier](desafios/episodio-1.md)
+* [Desafío 1: Instalación de n8n](desafios/episodio-2.md)
+* [Desafío 2: Primeros pasos con la interfaz de n8n](desafios/episodio-3.md)
+* [Desafío 3: Creación de un workflow básico](desafios/episodio-4.md)
+* [Desafío 4: Trabajando con webhooks](desafios/episodio-5.md)
+* [Desafío 5: Manipulación de datos](desafios/episodio-6.md)
+* [Desafío 6: Flujos condicionales](desafios/episodio-7.md)
+* [Desafío 7: Consumo de APIs](desafios/episodio-8.md)
+* [Desafío 8: Monitoreo de temperatura](desafios/episodio-9.md)
+* [Desafío 9: Resumen de textos con IA](desafios/episodio-10.md)
+* [Desafío 10: Agente matemático](desafios/episodio-11.md)
+* [Desafío 11: Sistema RAG para energías renovables](desafios/episodio-12.md)
+* [Desafío 12: Integración con Google Sheets](desafios/episodio-13.md)
 
 ## Recursos
 
