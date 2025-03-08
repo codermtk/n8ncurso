@@ -2,59 +2,20 @@
 
 ![Interfaz de n8n](https://docs.n8n.io/assets/img/workflow-ui.c5c1bc1e.png)
 
-## Contenidos
-
-### Elementos principales de la interfaz de n8n
-
-La interfaz de usuario de n8n está compuesta por varios elementos clave:
-
-1. **Menú lateral izquierdo**: Proporciona acceso a:
-   - Workflows: Lista de todos tus flujos de trabajo
-   - Credentials: Gestión de credenciales para conectar con servicios externos
-   - Executions: Historial de ejecuciones de tus workflows
-   - Settings: Configuración general de n8n
-
-2. **Canvas central**: Área principal donde se diseñan los workflows arrastrando y conectando nodos.
-
-3. **Barra de herramientas superior**: Contiene:
-   - Botón de guardar
-   - Botón de ejecutar workflow
-   - Opciones de zoom
-   - Acceso a la configuración del workflow
-
-4. **Panel de nodos**: Aparece al hacer clic en "+" para añadir un nodo, mostrando todos los nodos disponibles organizados por categorías.
-
-### Tipos de nodos básicos
-
-- **Trigger Nodes**: Inician un workflow (Manual, Schedule, Webhook, etc.)
-- **Regular Nodes**: Procesan datos (HTTP Request, Set, Function, etc.)
-- **Core Nodes**: Funcionalidades básicas como manipulación de datos
-
-### Conexión de nodos
-
-Para conectar dos nodos:
-1. Haz clic en el punto de salida de un nodo
-2. Arrastra hasta el punto de entrada del siguiente nodo
-3. Suelta para crear la conexión
-
-También puedes hacer clic en el botón "+" que aparece después de un nodo para añadir y conectar automáticamente un nuevo nodo.
-
-## Desafío
-
-### Objetivo
+## Objetivo
 
 Familiarizarte con la interfaz de usuario de n8n creando un workflow simple con dos nodos conectados y ejecutándolo manualmente.
 
-### Contexto
+## Contexto
 
 La interfaz de n8n está diseñada para facilitar la creación visual de flujos de trabajo. Antes de crear automatizaciones complejas, es importante entender cómo navegar por la interfaz, añadir nodos y conectarlos entre sí. Este desafío te ayudará a dar tus primeros pasos en el entorno de n8n.
 
-### Requisitos
+## Requisitos
 
 - n8n instalado y funcionando en tu máquina local
 - Acceso a la interfaz web de n8n
 
-### El desafío
+## El desafío
 
 1. **Explorar la interfaz de n8n**
    - Accede a la interfaz web de n8n
@@ -72,14 +33,14 @@ La interfaz de n8n está diseñada para facilitar la creación visual de flujos 
    - Observa cómo fluyen los datos entre los nodos
    - Examina los resultados de la ejecución
 
-### Pistas
+## Pistas
 
 - El nodo "Manual Trigger" es el punto de partida para workflows que se ejecutan manualmente
 - El nodo "Set" permite definir valores estáticos que se utilizarán en el workflow
 - Para añadir un nodo, puedes hacer clic en el botón "+" que aparece después de un nodo existente
 - Para ejecutar un workflow, utiliza el botón "Execute Workflow" en la parte superior del canvas
 
-### Entrega
+## Entrega
 
 Para completar este desafío, debes entregar:
 
@@ -88,9 +49,4 @@ Para completar este desafío, debes entregar:
 3. Breve explicación (150-200 palabras) sobre:
    - La función del nodo "Manual Trigger"
    - La función del nodo "Set"
-   - Cómo fluyen los datos entre estos nodos
-
-## Recursos
-
-- [Documentación de la interfaz de usuario de n8n](https://docs.n8n.io/workflows/editor-ui/)
-- [Guía de nodos básicos en n8n](https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.set/) 
+   - Cómo fluyen los datos entre estos nodos 
