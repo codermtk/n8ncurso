@@ -1,77 +1,39 @@
 # Desafío del Episodio 4
 
-## Contenido del desafío
-- [Desafío](#desafío)
-- [Instrucciones de Solución](#instrucciones-de-solución)
-  - [Paso 1: Crear un nuevo workflow](#paso-1-crear-un-nuevo-workflow)
-  - [Paso 2: Configurar el nodo "Manual Trigger"](#paso-2-configurar-el-nodo-manual-trigger)
-  - [Paso 3: Configurar el nodo "Set"](#paso-3-configurar-el-nodo-set)
-  - [Paso 4: Ejecutar y visualizar el workflow](#paso-4-ejecutar-y-visualizar-el-workflow)
+## Contenido
+- [Descripción del desafío](#descripción-del-desafío)
+- [Objetivos](#objetivos)
 - [Extensión del desafío (opcional)](#extensión-del-desafío-opcional)
-- [Conceptos clave](#conceptos-clave)
+- [Entrega](#entrega)
 - [Recursos adicionales](#recursos-adicionales)
 
-## Desafío
+## Descripción del desafío
 
-Construye un workflow que use un "Manual Trigger" y un nodo "Set" para crear tu primer dato artificial: un objeto JSON con tu nombre y apellido (por ejemplo, {"nombre": "Juan", "apellido": "García"}). Ejecuta el workflow y visualiza el resultado en diferentes formatos (JSON, Table y Schema).
+En este desafío, crearás tu primer workflow para generar datos artificiales utilizando los conceptos básicos aprendidos sobre nodos y flujo de datos en n8n.
 
 ![Desafío Parte 4](../images/parte4/desafioparte4.png)
 
-## Instrucciones de Solución
+## Objetivos
 
-### Paso 1: Crear un nuevo workflow
+Tu workflow debe cumplir con los siguientes objetivos:
 
-1. Accede a la interfaz de n8n en tu navegador.
-2. Crea un nuevo workflow y nómbralo "Mi Primer Dato".
-
-### Paso 2: Configurar el nodo "Manual Trigger"
-
-1. Añade un nodo "Manual Trigger" al canvas.
-2. No es necesario configurar nada en este nodo, ya que simplemente iniciará el workflow manualmente.
-
-### Paso 3: Configurar el nodo "Set"
-
-1. Añade un nodo "Set" después del "Manual Trigger".
-2. En la configuración del nodo "Set", haz clic en "Add Value" para añadir un nuevo campo.
-3. Configura el primer campo con:
-   - Name: `nombre`
-   - Type: `String`
-   - Value: `[Tu nombre]` (reemplaza con tu nombre real)
-4. Haz clic en "Add Value" nuevamente para añadir otro campo.
-5. Configura el segundo campo con:
-   - Name: `apellido`
-   - Type: `String`
-   - Value: `[Tu apellido]` (reemplaza con tu apellido real)
-6. Guarda la configuración del nodo.
-
-### Paso 4: Ejecutar y visualizar el workflow
-
-1. Haz clic en "Test Workflow" para ejecutar el workflow.
-2. Una vez completada la ejecución, haz clic en el nodo "Set" para ver el resultado.
-3. En el panel que se abre, explora las diferentes vistas:
-   - **JSON**: Muestra la estructura completa de los datos
-   - **Table**: Presenta los datos en formato de tabla
-   - **Schema**: Muestra el esquema de los datos (tipos y estructura)
+1. Utilizar un nodo "Manual Trigger" como punto de inicio del workflow
+2. Conectar un nodo "Set" para crear un objeto JSON con:
+   - Un campo para tu nombre
+   - Un campo para tu apellido
+3. Ejecutar el workflow y visualizar el resultado en diferentes formatos:
+   - Vista JSON
+   - Vista Table
+   - Vista Schema
 
 ## Extensión del desafío (opcional)
 
 Si quieres llevar este desafío un paso más allá, puedes:
 
-1. Añadir un segundo nodo "Set" que combine el nombre y apellido en un campo "nombreCompleto".
-2. Utilizar el modo Expression para crear este campo, con una expresión como:
-   ```
-   {{ $json.nombre + " " + $json.apellido }}
-   ```
-3. Añadir todo el resto de campos que quieras como "edad", "ciudad" o "profesión".
-   ```
+1. Añadir un segundo nodo "Set" que combine el nombre y apellido en un campo "nombreCompleto" utilizando el modo Expression
+2. Añadir campos adicionales como "edad", "ciudad" o "profesión"
+3. Experimentar con diferentes tipos de datos (Number, Boolean, Array, Object)
 
-
-## Conceptos clave
-
-- **JSON (JavaScript Object Notation)**: Un formato ligero de intercambio de datos.
-- **Nodo Set**: Permite definir valores estáticos o dinámicos en un workflow.
-- **Modos Fixed vs Expression**: Diferentes formas de configurar valores en n8n.
-- **Visualización de datos**: Diferentes formas de ver y entender los datos en n8n.
 
 ## Recursos adicionales
 

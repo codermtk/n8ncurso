@@ -1,31 +1,29 @@
-# Desafío 3: Creación de un workflow básico
+# Desafío del Episodio 3
 
-## Objetivo
+## Contenido
+- [Descripción del desafío](#descripción-del-desafío)
+- [Objetivos](#objetivos)
+- [Entrega](#entrega)
+- [Recursos adicionales](#recursos-adicionales)
 
-Crear tu primer workflow con un trigger manual y ejecutarlo utilizando el botón de Test Workflow.
+## Descripción del desafío
+
+En este desafío, crearás tu primer workflow en n8n utilizando un trigger manual. Este es el punto de partida para entender cómo funcionan los workflows en n8n y cómo se ejecutan.
 
 ![Desafío 3](../images/parte3/desafio3/desafio3.png)
 
-## Contexto
+## Objetivos
 
-El punto de partida de cualquier automatización en n8n es un trigger. El trigger manual es el más sencillo de todos, ya que permite iniciar un workflow con un simple clic. En este desafío, crearás un workflow con un trigger manual y aprenderás a ejecutarlo.
+Tu workflow debe cumplir con los siguientes objetivos:
 
-## Requisitos
+1. Crear un nuevo workflow con un nombre descriptivo
+2. Añadir un nodo "Manual Trigger" al canvas
+3. Ejecutar el workflow utilizando el botón "Test Workflow"
+4. Observar el resultado de la ejecución
 
-- n8n instalado y funcionando
 
-## El desafío
+## Recursos adicionales
 
-1. **Crear un nuevo workflow**
-   - Crea un nuevo workflow y nómbralo "Mi primer workflow"
-
-2. **Añadir un trigger manual**
-   - Añade un nodo "Manual Trigger" al canvas
-   - No es necesario configurar nada en este nodo
-
-3. **Ejecutar el workflow**
-   - Localiza el botón "Test Workflow" en la parte superior del canvas
-   - Haz clic en el botón para ejecutar el workflow
-   - Observa cómo el nodo cambia de color al ejecutarse
-   - Haz clic en el nodo para ver los datos de salida
+- [Documentación de n8n sobre triggers](https://docs.n8n.io/workflows/triggers/)
+- [Documentación del nodo Manual Trigger](https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.manualtrigger/)
 
