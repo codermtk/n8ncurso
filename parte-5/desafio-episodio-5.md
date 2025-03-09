@@ -3,7 +3,6 @@
 ## Contenido
 - [Descripción del desafío](#descripción-del-desafío)
 - [Objetivos](#objetivos)
-- [Entrega](#entrega)
 - [Recursos adicionales](#recursos-adicionales)
 
 ## Descripción del desafío

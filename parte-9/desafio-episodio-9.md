@@ -1,97 +1,62 @@
-# Desafío del Episodio 9
+# Desafío del Episodio 9: Creando un Asistente Pirata con LLM Chain
 
-## Desafío
+## Contenido
+- [Descripción del desafío](#descripción-del-desafío)
+- [Objetivos](#objetivos)
+- [Recursos necesarios](#recursos-necesarios)
+- [Recursos adicionales](#recursos-adicionales)
 
-Desarrolla un workflow que combine varios conceptos aprendidos: usa un trigger de "Schedule" para ejecutarse cada hora, obtén datos de una API pública (como el clima actual en https://wttr.in/?format=j1), procesa los datos para extraer la temperatura y usa un nodo "If" para mostrar un mensaje en un nodo "Log" si la temperatura es mayor a 30 grados (por ejemplo, "¡Hace calor!").
+## Descripción del desafío
 
-## Instrucciones
+En este desafío, pondrás en práctica lo aprendido sobre los nodos de IA en n8n creando un asistente virtual con personalidad de pirata. Este asistente deberá responder preguntas, contar historias del mar, utilizar jerga pirata y mantener el carácter durante toda la interacción.
 
-### Paso 1: Crear un nuevo workflow
+Este proyecto te permitirá experimentar con las system prompts para definir personalidades en modelos de lenguaje, así como practicar la configuración de parámetros.
 
-1. Accede a la interfaz de n8n en tu navegador (http://localhost:5678).
-2. Crea un nuevo workflow y nómbralo "Monitor de Temperatura".
+![Desafío 9](../images/parte9/pirata.jpg)
 
-### Paso 2: Configurar el nodo "Schedule Trigger"
+## Objetivos
 
-1. Añade un nodo "Schedule Trigger" al canvas.
-2. Configura el nodo para que se ejecute cada hora:
-   - Mode: `Basic`
-   - Interval: `Every Hour`
-3. Guarda la configuración del nodo.
+Tu asistente pirata debe cumplir con los siguientes requisitos:
 
-### Paso 3: Configurar el nodo "HTTP Request" para obtener datos del clima
+1. **Personalidad consistente**: Mantener el carácter de pirata en todas sus respuestas, utilizando vocabulario y expresiones típicas de piratas.
 
-1. Añade un nodo "HTTP Request" después del "Schedule Trigger".
-2. Configura el nodo con los siguientes parámetros:
-   - Method: `GET`
-   - URL: `https://wttr.in/?format=j1`
-   - Authentication: `None`
-   - Headers: Deja los valores predeterminados
-   - Query Parameters: Deja en blanco
-   - Response Format: `JSON`
-3. Guarda la configuración del nodo.
+2. **Capacidades conversacionales**:
+   - Responder preguntas generales desde la perspectiva de un pirata
+   - Contar historias de aventuras en el mar cuando se le solicite
+   - Describir tesoros, barcos y otros elementos del mundo pirata
+   - Convertir frases normales a "habla pirata"
 
-### Paso 4: Configurar el nodo "Set" para extraer la temperatura
+## Recursos necesarios
 
-1. Añade un nodo "Set" después del nodo "HTTP Request".
-2. En la configuración del nodo "Set", haz clic en "Add Value" para añadir un nuevo campo.
-3. Configura el campo con:
-   - Name: `temperatura`
-   - Type: `Number`
-   - Value: `{{$json.current_condition[0].temp_C}}`
-4. Guarda la configuración del nodo.
+### Credenciales de un modelo de lenguaje
 
-### Paso 5: Configurar el nodo "If" para evaluar la temperatura
+Para este desafío, necesitarás acceso a un modelo de lenguaje. Recomiendo utilizar Gemini de Google, ya que hay modelos muy buenos y son gratuitos, pero puedes utilizar cualquiera de estos proveedores:
 
-1. Añade un nodo "If" después del nodo "Set".
-2. En la configuración del nodo "If", configura los siguientes parámetros:
-   - Value 1: `{{$json.temperatura}}`
-   - Operation: `Larger`
-   - Value 2: `30`
-3. Guarda la configuración del nodo.
+- **Google AI (Gemini)**: [Consigue una API key aquí](https://aistudio.google.com/apikey)
+- **OpenAI**: [Consigue una API key aquí](https://platform.openai.com/)
+- **Anthropic (Claude)**: [Consigue una API key aquí](https://www.anthropic.com/product)
+- **Ollama**: Para ejecutar modelos localmente [Instrucciones de instalación](https://ollama.ai/)
 
-### Paso 6: Configurar los nodos "Log" para las respuestas
+### Ejemplos de jerga pirata
 
-1. Añade un nodo "Log" conectado a la salida "true" del nodo "If".
-2. Configura este nodo con:
-   - Log Level: `Info`
-   - Log Message: `¡Hace calor! La temperatura actual es de {{$json.temperatura}}°C.`
-3. Guarda la configuración del nodo.
+Para ayudarte a diseñar un buen prompt de sistema, aquí tienes algunos ejemplos de expresiones piratas:
 
-4. Añade otro nodo "Log" conectado a la salida "false" del nodo "If".
-5. Configura este nodo con:
-   - Log Level: `Info`
-   - Log Message: `Temperatura agradable. Actualmente hace {{$json.temperatura}}°C.`
-6. Guarda la configuración del nodo.
-
-### Paso 7: Ejecutar y verificar el workflow
-
-1. Haz clic en "Execute Workflow" para ejecutar el workflow manualmente (sin esperar a la programación).
-2. Una vez completada la ejecución, verifica qué camino ha tomado el flujo de datos según la temperatura actual.
-3. Observa el mensaje en el nodo "Log" correspondiente.
-
-## Entrega
-
-Para completar este desafío, debes:
-
-1. Adjuntar una captura de pantalla del canvas con todos los nodos conectados.
-2. Adjuntar una captura de pantalla de la respuesta del nodo "HTTP Request" mostrando los datos del clima.
-3. Adjuntar una captura de pantalla del mensaje del nodo "Log" que se activó según la temperatura.
-4. Responder a las siguientes preguntas:
-   - ¿Qué otras programaciones podrías configurar con el nodo "Schedule Trigger"?
-   - ¿Cómo podrías modificar este workflow para enviar una notificación por correo electrónico cuando la temperatura supere los 30 grados?
-   - ¿Qué otros datos del clima podrías extraer y utilizar en este workflow?
-
-## Conceptos clave
-
-- **Automatización programada**: Cómo ejecutar workflows automáticamente según un horario.
-- **Integración de múltiples nodos**: Cómo combinar diferentes tipos de nodos para crear workflows complejos.
-- **Procesamiento condicional**: Cómo tomar decisiones basadas en datos externos.
-- **Monitoreo de datos**: Cómo crear sistemas de monitoreo automatizados.
+- "¡Arr!" - Expresión general de emoción o acuerdo
+- "¡Ahoy, marinero!" - Saludo
+- "Avast ye" - Prestar atención
+- "Shiver me timbers" - Expresión de sorpresa
+- "Yo-ho-ho" - Risa o celebración
+- "Camina por la plancha" - Amenaza
+- "Botín" - Tesoro o recompensa
+- "Grumete" - Marinero novato
+- "Galeón" - Tipo de barco
+- "Davy Jones' locker" - El fondo del mar (muerte)
 
 ## Recursos adicionales
 
-- [Documentación del nodo Schedule](https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.schedule/)
-- [API de clima wttr.in](https://github.com/chubin/wttr.in)
-- [Guía de expresiones en n8n](https://docs.n8n.io/code-examples/expressions/)
-- [Patrones de automatización comunes](https://docs.n8n.io/workflows/best-practices/) 
+- [Guía de Google AI para Gemini](https://ai.google.dev/docs/gemini_api_overview)
+
+## Conceptos clave
+
+- **Prompts de sistema**: Cómo definir personalidades y comportamientos específicos en modelos de lenguaje.
+- **Parámetros de generación**: Cómo ajustar la creatividad y estilo de las respuestas.

@@ -4,7 +4,6 @@
 - [Descripción del desafío](#descripción-del-desafío)
 - [Objetivos](#objetivos)
 - [Datos de ejemplo](#datos-de-ejemplo)
-- [Entrega](#entrega)
 - [Recursos adicionales](#recursos-adicionales)
 
 ## Descripción del desafío

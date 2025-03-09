@@ -40,25 +40,21 @@ El curso está organizado en partes, cada una con un episodio y su desafío corr
 - **Episodio 8**: Funcionalidades esenciales
 - **Desafío del Episodio 8**: Monitoreo de temperatura
 
-### Parte 9: Juntando todo a la vez
-- **Episodio 9**: Integración de componentes
-- **Desafío del Episodio 9**: Resumen de textos con IA
+### Parte 9: Nodos de IA 1: Intro y Chains
+- **Episodio 9**: Fundamentos de IA en n8n
+- **Desafío del Episodio 9**: Agente matemático
 
-### Parte 10: Nodos de IA 1: Intro y Chains
-- **Episodio 10**: Fundamentos de IA en n8n
-- **Desafío del Episodio 10**: Agente matemático
+### Parte 10: Nodos de IA 2: Agentes, Intro Memoria, Intro Herramientas
+- **Episodio 10**: Agentes inteligentes y memoria
+- **Desafío del Episodio 10**: Sistema RAG para energías renovables
 
-### Parte 11: Nodos de IA 2: Agentes, Intro Memoria, Intro Herramientas
-- **Episodio 11**: Agentes inteligentes y memoria
-- **Desafío del Episodio 11**: Sistema RAG para energías renovables
+### Parte 11: Nodos de IA 3: RAG y Vector Stores
+- **Episodio 11**: Recuperación aumentada de generación
+- **Desafío del Episodio 11**: Integración con Google Sheets
 
-### Parte 12: Nodos de IA 3: RAG y Vector Stores
-- **Episodio 12**: Recuperación aumentada de generación
-- **Desafío del Episodio 12**: Integración con Google Sheets
-
-### Parte 13: Nodos In App
-- **Episodio 13**: Integración con aplicaciones internas
-- **Desafío del Episodio 13**: Proyecto final
+### Parte 12: Nodos In App
+- **Episodio 12**: Integración con aplicaciones internas
+- **Desafío del Episodio 12**: Proyecto final
 
 ## ¿Qué es n8n?
 

@@ -1,77 +1,129 @@
-# Episodio 10: Nodos de IA 1: Intro y Chains
+# Episodio 10: Nodos de IA 2 - Agentes, Memoria y Herramientas
 
-## Desafío
+## Contenido del episodio
+- [Introducción a los Agentes en n8n](#introducción-a-los-agentes-en-n8n)
+- [Diferencias entre Chains y Agentes](#diferencias-entre-chains-y-agentes)
+- [Componentes de un Agente](#componentes-de-un-agente)
+  - [El bucle de razonamiento](#el-bucle-de-razonamiento)
+  - [Herramientas disponibles](#herramientas-disponibles)
+  - [Sistemas de memoria](#sistemas-de-memoria)
+- [Implementando nuestro primer Agente](#implementando-nuestro-primer-agente)
+- [Herramientas avanzadas](#herramientas-avanzadas)
+  - [Calculadora](#calculadora)
+  - [Búsqueda web con SerpAPI](#búsqueda-web-con-serpapi)
+  - [Creando herramientas personalizadas](#creando-herramientas-personalizadas)
+- [Memoria en Agentes](#memoria-en-agentes)
+  - [Tipos de memoria](#tipos-de-memoria)
+  - [Memoria de conversación](#memoria-de-conversación)
+  - [Memoria persistente](#memoria-persistente)
+- [Caso práctico: Asistente de investigación](#caso-práctico-asistente-de-investigación)
+- [Desafío del episodio 10](#desafío-del-episodio-10)
 
-Crea una chain simple usando un nodo "LLM Chain" con un modelo de lenguaje para generar un resumen de un texto corto que tú proporciones. Por ejemplo, usa un párrafo sobre "el cambio climático" y pide al modelo que lo resuma en una frase.
+## Introducción a los Agentes en n8n
 
-## Instrucciones
+En el episodio anterior, exploramos las Chains como una forma de combinar modelos de lenguaje con prompts específicos para realizar tareas predefinidas. En este episodio, daremos un paso más allá y nos adentraremos en el mundo de los Agentes, que representan un nivel superior de autonomía e inteligencia en nuestros flujos de trabajo.
 
-### Paso 1: Crear un nuevo workflow
+Los Agentes en n8n son sistemas que pueden:
 
-1. Accede a la interfaz de n8n en tu navegador (http://localhost:5678).
-2. Crea un nuevo workflow y nómbralo "Resumen con IA".
+- Razonar sobre cómo resolver problemas complejos
+- Decidir qué herramientas utilizar en cada momento
+- Mantener memoria de interacciones previas
+- Planificar y ejecutar secuencias de acciones
+- Adaptarse a diferentes situaciones y consultas
 
-### Paso 2: Configurar el nodo "Manual Trigger"
+Esta capacidad de "pensar" y tomar decisiones hace que los Agentes sean especialmente útiles para tareas que requieren flexibilidad, investigación o resolución de problemas en múltiples pasos.
 
-1. Añade un nodo "Manual Trigger" al canvas.
-2. No es necesario configurar nada en este nodo, ya que simplemente iniciará el workflow manualmente.
+## Diferencias entre Chains y Agentes
 
-### Paso 3: Configurar el nodo "Set" para el texto a resumir
+Aunque ya mencionamos algunas diferencias en el episodio anterior, es importante profundizar en lo que distingue a los Agentes de las Chains:
 
-1. Añade un nodo "Set" después del "Manual Trigger".
-2. En la configuración del nodo "Set", haz clic en "Add Value" para añadir un nuevo campo.
-3. Configura el campo con:
-   - Name: `texto`
-   - Type: `String`
-   - Value: `El cambio climático es uno de los mayores desafíos que enfrenta la humanidad en el siglo XXI. Se refiere a la variación global del clima de la Tierra debido a causas naturales y principalmente a la acción humana. Este fenómeno se manifiesta en un aumento de la temperatura media del planeta, lo que provoca alteraciones en los patrones climáticos, como el aumento del nivel del mar, la intensificación de fenómenos meteorológicos extremos, y cambios en los ecosistemas. Las principales causas del cambio climático antropogénico son la emisión de gases de efecto invernadero, la deforestación y la industrialización.`
-4. Guarda la configuración del nodo.
+| Característica | Chains | Agentes |
+|----------------|--------|---------|
+| Flujo de trabajo | Predefinido y lineal | Dinámico y adaptativo |
+| Toma de decisiones | No tienen capacidad de decisión | Pueden decidir qué acciones tomar |
+| Uso de herramientas | Limitado o nulo | Pueden utilizar múltiples herramientas |
+| Memoria | Generalmente no mantienen contexto | Pueden mantener memoria de conversaciones |
+| Complejidad | Más simples y directas | Más complejos y versátiles |
+| Consumo de recursos | Menor (menos tokens) | Mayor (más tokens) |
+| Velocidad | Más rápidas | Más lentos debido al proceso de razonamiento |
+| Casos de uso | Tareas específicas y bien definidas | Problemas complejos y abiertos |
 
-### Paso 4: Configurar el nodo "LLM Chain"
+## Componentes de un Agente
 
-1. Añade un nodo "LLM Chain" después del nodo "Set".
-2. Configura el nodo con los siguientes parámetros:
-   - LLM Provider: `OpenAI` (o el proveedor que tengas disponible)
-   - API Key: Ingresa tu API key para el proveedor seleccionado
-   - Model: Selecciona un modelo adecuado (por ejemplo, `gpt-3.5-turbo`)
-   - Prompt: `Resumir el siguiente texto en una sola frase: {{$json.texto}}`
-   - Output Field Name: `resumen`
-3. Guarda la configuración del nodo.
+Un Agente en n8n consta de varios componentes esenciales:
 
-### Paso 5: Configurar el nodo "Log" para mostrar el resumen
+### El bucle de razonamiento
 
-1. Añade un nodo "Log" después del nodo "LLM Chain".
-2. En la configuración del nodo "Log", configura los siguientes parámetros:
-   - Log Level: `Info`
-   - Log Message: `Resumen: {{$json.resumen}}`
-3. Guarda la configuración del nodo.
+El corazón de un Agente es su bucle de razonamiento (reasoning loop), que sigue estos pasos:
 
-### Paso 6: Ejecutar y verificar el workflow
+1. **Observación**: El Agente recibe una entrada (pregunta, instrucción, etc.)
+2. **Pensamiento**: El Agente razona sobre cómo abordar el problema
+3. **Decisión**: El Agente decide qué herramienta utilizar o qué acción tomar
+4. **Acción**: El Agente ejecuta la acción decidida
+5. **Observación de resultados**: El Agente analiza el resultado de la acción
+6. **Iteración**: El Agente repite el proceso hasta resolver el problema
 
-1. Haz clic en "Execute Workflow" para ejecutar el workflow.
-2. Una vez completada la ejecución, haz clic en el nodo "LLM Chain" para ver la respuesta generada por el modelo.
-3. Verifica que el nodo "Log" muestre el resumen generado.
+Este bucle permite al Agente adaptarse y encontrar soluciones de manera dinámica, similar a cómo un humano abordaría un problema.
 
-## Entrega
+### Sistemas de memoria
 
-Para completar este desafío, debes:
+Los Agentes pueden mantener diferentes tipos de memoria:
 
-1. Adjuntar una captura de pantalla del canvas con todos los nodos conectados.
-2. Adjuntar una captura de pantalla de la salida del nodo "LLM Chain" mostrando el resumen generado.
-3. Responder a las siguientes preguntas:
-   - ¿Qué otros proveedores de LLM podrías utilizar en n8n?
-   - ¿Cómo podrías modificar este workflow para generar resúmenes de diferentes longitudes?
-   - ¿Qué otras tareas de procesamiento de lenguaje natural podrías realizar con un nodo "LLM Chain"?
+- **Memoria a corto plazo**: Para mantener el contexto de la conversación actual
+- **Memoria a largo plazo**: Para recordar información de conversaciones anteriores
+- **Memoria persistente**: Para almacenar información importante entre sesiones
 
-## Conceptos clave
+La memoria permite a los Agentes ofrecer respuestas más coherentes y personalizadas a lo largo del tiempo.
 
-- **Modelos de Lenguaje (LLM)**: Qué son y cómo funcionan los modelos de lenguaje de gran escala.
-- **Chains**: Cómo crear secuencias de operaciones con modelos de IA.
-- **Prompts**: Cómo diseñar instrucciones efectivas para los modelos de lenguaje.
-- **Integración de IA en workflows**: Cómo incorporar capacidades de IA en tus automatizaciones.
+## Implementando nuestro primer Agente
 
-## Recursos adicionales
+Vamos a implementar un Agente básico que pueda responder preguntas utilizando herramientas cuando sea necesario. Seguiremos estos pasos:
 
-- [Documentación de n8n sobre nodos de IA](https://docs.n8n.io/integrations/builtin/cluster-nodes/root-nodes/n8n-nodes-langchain.llmchain/)
-- [Guía de prompting para modelos de lenguaje](https://www.promptingguide.ai/)
-- [Documentación de OpenAI](https://platform.openai.com/docs/introduction)
-- [Introducción a LangChain](https://docs.langchain.com/docs/) 
+1. **Crear un nuevo workflow**:
+   - Nombre: "Asistente Inteligente"
+   - Descripción: "Un Agente que puede responder preguntas y utilizar herramientas"
+
+2. **Añadir un nodo Chat Input**:
+   - Este será el punto de entrada para las preguntas del usuario
+
+3. **Añadir un nodo Agent**:
+   - Conectar con el proveedor de modelo (usaremos Google para este ejemplo)
+   - Configurar el System Message para definir el comportamiento del agente
+   - Configurar las herramientas que el agente puede utilizar
+   - Configurar la memoria para mantener el contexto de la conversación
+
+### Configuración del nodo Agent
+
+La configuración del nodo Agent sería la siguiente:
+
+1. **Conexión al modelo**:
+   - Modelo: gemini-2.0-flash
+   - Credencial: Tu clave API de Google
+
+2. **System Message**:
+   ```
+   Eres un asistente inteligente y servicial. Tu objetivo es ayudar al usuario a resolver sus dudas y problemas.
+   Cuando necesites información que no conoces o realizar cálculos, utiliza las herramientas disponibles.
+   Explica tu razonamiento paso a paso y sé preciso en tus respuestas.
+   ```
+
+3. **Herramientas**:
+   - Activar la herramienta Calculadora
+   - Configurar otras herramientas según sea necesario
+
+4. **Memoria**:
+   - Activar la memoria de conversación
+   - Configurar el número máximo de mensajes a recordar
+
+5. **Parámetros de generación**:
+   - Temperature: 0.2 (para respuestas más precisas)
+   - Top P: 0.9
+
+
+## Memoria en Agentes
+
+La memoria es un componente crucial que permite a los Agentes mantener contexto y ofrecer respuestas coherentes a lo largo del tiempo.
+
+## Desafío del episodio 10
+
+Para poner en práctica lo aprendido, te invitamos a completar el [desafío del episodio 10](desafio-episodio-10.md), donde crearás un Agente de investigación con memoria persistente que pueda buscar información en internet y recordar datos importantes entre sesiones. 

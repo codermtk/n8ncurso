@@ -1,136 +1,171 @@
-# Episodio 12: Nodos de IA 3: RAG y Vector Stores
+# Episodio 12: Nodos In App
 
-## Desafío
+## Contenido del episodio
+- [Introducción a los nodos In App](#introducción-a-los-nodos-in-app)
+- [Tipos de nodos In App](#tipos-de-nodos-in-app)
+  - [Nodos Trigger](#nodos-trigger)
+  - [Nodos de Acción](#nodos-de-acción)
+  - [Nodos de Datos](#nodos-de-datos)
+- [Principales proveedores e integraciones](#principales-proveedores-e-integraciones)
+  - [Gmail y Google Workspace](#gmail-y-google-workspace)
+  - [Airtable](#airtable)
+  - [Telegram](#telegram)
+  - [Slack](#slack)
+  - [Notion](#notion)
+- [Integraciones para herramientas de IA](#integraciones-para-herramientas-de-ia)
+- [Similaridad entre nodos In App y herramientas para agentes](#similaridad-entre-nodos-in-app-y-herramientas-para-agentes)
+- [Caso práctico 1: Automatización sin IA](#caso-práctico-1-automatización-sin-ia)
+- [Caso práctico 2: Combinando IA con integraciones](#caso-práctico-2-combinando-ia-con-integraciones)
+- [Estructura de contenido para integraciones](#estructura-de-contenido-para-integraciones)
+- [Desafío del episodio 12](#desafío-del-episodio-12)
 
-Implementa un sistema RAG simple donde cargues un pequeño conjunto de documentos de texto (por ejemplo, dos o tres párrafos sobre "energía renovable") en una Vector Store. Luego, usa un nodo de consulta para hacer una pregunta como "¿Qué es la energía solar?" y muestra la respuesta generada.
+## Introducción a los nodos In App
 
-## Instrucciones
+Hasta ahora, hemos explorado principalmente los nodos core de n8n y los nodos relacionados con IA. En este episodio, nos adentraremos en otro componente fundamental de n8n: los nodos In App, que nos permiten conectar nuestra automatización con servicios y aplicaciones externas.
 
-### Paso 1: Crear un nuevo workflow
+Los nodos In App son integraciones predefinidas con aplicaciones y servicios populares como Gmail, Google Sheets, Airtable, Telegram, Slack y muchos más. Estas integraciones nos permiten:
 
-1. Accede a la interfaz de n8n en tu navegador (http://localhost:5678).
-2. Crea un nuevo workflow y nómbralo "Sistema RAG de Energía Renovable".
+- Recibir datos y eventos de aplicaciones externas
+- Enviar datos y realizar acciones en estas aplicaciones
+- Procesar y transformar información entre diferentes servicios
 
-### Paso 2: Configurar el nodo "Manual Trigger"
+La combinación de estos nodos con las capacidades de IA que hemos aprendido abre un mundo de posibilidades para crear automatizaciones inteligentes y potentes.
 
-1. Añade un nodo "Manual Trigger" al canvas.
-2. No es necesario configurar nada en este nodo, ya que simplemente iniciará el workflow manualmente.
+## Tipos de nodos In App
 
-### Paso 3: Configurar el nodo "Set" para los documentos
+Los nodos In App se pueden clasificar en tres categorías principales según su función:
 
-1. Añade un nodo "Set" después del "Manual Trigger".
-2. En la configuración del nodo "Set", haz clic en "Add Value" para añadir un nuevo campo.
-3. Configura el campo con:
-   - Name: `documentos`
-   - Type: `Array`
-   - Value: 
-   ```json
-   [
-     {
-       "texto": "La energía solar es una fuente de energía renovable que se obtiene del sol. Esta energía se puede aprovechar de dos formas principales: la energía solar fotovoltaica, que convierte directamente la luz solar en electricidad mediante paneles solares, y la energía solar térmica, que utiliza el calor del sol para calentar un fluido que posteriormente se utiliza para generar electricidad o para aplicaciones de calefacción. La energía solar es abundante, inagotable y no contamina, lo que la convierte en una alternativa sostenible a los combustibles fósiles."
-     },
-     {
-       "texto": "La energía eólica es una forma de energía renovable que aprovecha la fuerza del viento para generar electricidad. Utiliza aerogeneradores o turbinas eólicas que convierten la energía cinética del viento en energía mecánica y, posteriormente, en energía eléctrica. Los parques eólicos pueden instalarse tanto en tierra firme como en el mar (offshore). La energía eólica es limpia, no produce emisiones durante su operación y ha experimentado un gran desarrollo tecnológico en las últimas décadas, lo que ha reducido significativamente sus costos."
-     },
-     {
-       "texto": "La energía hidroeléctrica es una fuente de energía renovable que aprovecha la energía del agua en movimiento para generar electricidad. Las centrales hidroeléctricas utilizan la fuerza del agua que cae desde cierta altura para mover turbinas conectadas a generadores eléctricos. Esta forma de energía es una de las más antiguas y desarrolladas entre las renovables, y proporciona una parte significativa de la electricidad mundial. Aunque no emite contaminantes durante su operación, la construcción de grandes presas puede tener impactos ambientales y sociales importantes."
-     }
-   ]
-   ```
-4. Guarda la configuración del nodo.
+### Nodos Trigger
 
-### Paso 4: Configurar el nodo "Document Loader"
+Los nodos Trigger inician un workflow cuando ocurre un evento específico en la aplicación externa:
 
-1. Añade un nodo "Document Loader" después del nodo "Set".
-2. Configura el nodo con los siguientes parámetros:
-   - Loader Type: `JSON`
-   - JSON: `{{$json.documentos}}`
-   - JSON Pointer: `texto`
-   - Metadata: Deja en blanco
-   - Output Field Name: `documentos_cargados`
-3. Guarda la configuración del nodo.
+- **Ejemplos**:
+  - Gmail: Cuando se recibe un nuevo correo
+  - Telegram: Cuando llega un nuevo mensaje
+  - Google Calendar: Cuando se crea un nuevo evento
+  - Airtable: Cuando se añade un nuevo registro
 
-### Paso 5: Configurar el nodo "Text Splitter"
+- **Características**:
+  - Funcionan como puntos de entrada para el workflow
+  - Pueden configurarse para filtrar eventos específicos
+  - Suelen requerir webhooks o polling para detectar eventos
 
-1. Añade un nodo "Text Splitter" después del nodo "Document Loader".
-2. Configura el nodo con los siguientes parámetros:
-   - Documents: `{{$json.documentos_cargados}}`
-   - Splitter Type: `Character`
-   - Chunk Size: `1000`
-   - Chunk Overlap: `200`
-   - Output Field Name: `documentos_divididos`
-3. Guarda la configuración del nodo.
+### Nodos de Acción
 
-### Paso 6: Configurar el nodo "Vector Store"
+Los nodos de Acción realizan operaciones en la aplicación externa:
 
-1. Añade un nodo "Vector Store" después del nodo "Text Splitter".
-2. Configura el nodo con los siguientes parámetros:
-   - Operation: `Create and Store`
-   - Vector Store Type: `In-Memory` (para este ejemplo simple)
-   - Documents: `{{$json.documentos_divididos}}`
-   - Embeddings Provider: `OpenAI` (o el proveedor que tengas disponible)
-   - API Key: Ingresa tu API key para el proveedor seleccionado
-   - Output Field Name: `vector_store`
-3. Guarda la configuración del nodo.
+- **Ejemplos**:
+  - Gmail: Enviar un correo electrónico
+  - Google Sheets: Añadir una fila a una hoja de cálculo
+  - Telegram: Enviar un mensaje
+  - Airtable: Crear un nuevo registro
 
-### Paso 7: Configurar el nodo "Set" para la pregunta
+- **Características**:
+  - Ejecutan operaciones específicas en la aplicación
+  - Pueden configurarse con datos dinámicos
+  - Devuelven información sobre el resultado de la acción
 
-1. Añade un nodo "Set" después del nodo "Vector Store".
-2. En la configuración del nodo "Set", haz clic en "Add Value" para añadir un nuevo campo.
-3. Configura el campo con:
-   - Name: `pregunta`
-   - Type: `String`
-   - Value: `¿Qué es la energía solar?`
-4. Guarda la configuración del nodo.
+### Nodos de Datos
 
-### Paso 8: Configurar el nodo "Retrieval QA Chain"
+Los nodos de Datos recuperan o manipulan información en la aplicación externa:
 
-1. Añade un nodo "Retrieval QA Chain" después del nodo "Set" para la pregunta.
-2. Configura el nodo con los siguientes parámetros:
-   - LLM Provider: `OpenAI` (o el proveedor que tengas disponible)
-   - API Key: Ingresa tu API key para el proveedor seleccionado
-   - Model: Selecciona un modelo adecuado (por ejemplo, `gpt-3.5-turbo`)
-   - Vector Store: `{{$json.vector_store}}`
-   - Question: `{{$json.pregunta}}`
-   - Chain Type: `Stuff`
-   - Output Field Name: `respuesta`
-3. Guarda la configuración del nodo.
+- **Ejemplos**:
+  - Gmail: Buscar correos electrónicos
+  - Google Sheets: Leer filas de una hoja de cálculo
+  - Notion: Buscar páginas o bases de datos
+  - Airtable: Listar registros con filtros
 
-### Paso 9: Configurar el nodo "Log" para mostrar la respuesta
+- **Características**:
+  - Permiten consultar y recuperar información
+  - Suelen ofrecer opciones de filtrado y ordenación
+  - Facilitan la integración de datos entre aplicaciones
 
-1. Añade un nodo "Log" después del nodo "Retrieval QA Chain".
-2. En la configuración del nodo "Log", configura los siguientes parámetros:
-   - Log Level: `Info`
-   - Log Message: `Respuesta a la pregunta "{{$json.pregunta}}": {{$json.respuesta}}`
-3. Guarda la configuración del nodo.
+## Principales proveedores e integraciones
 
-### Paso 10: Ejecutar y verificar el workflow
+n8n ofrece integraciones con cientos de aplicaciones y servicios. Veamos algunos de los más populares y versátiles:
 
-1. Haz clic en "Execute Workflow" para ejecutar el workflow.
-2. Una vez completada la ejecución, haz clic en el nodo "Retrieval QA Chain" para ver la respuesta generada.
-3. Verifica que el nodo "Log" muestre la respuesta a la pregunta sobre energía solar.
+### Gmail y Google Workspace
 
-## Entrega
+La integración con Google Workspace es una de las más completas y utilizadas:
 
-Para completar este desafío, debes:
+- **Gmail**: Enviar y recibir correos, gestionar etiquetas, buscar mensajes
+- **Google Sheets**: Crear y actualizar hojas de cálculo, leer y escribir datos
+- **Google Drive**: Gestionar archivos, crear carpetas, compartir documentos
+- **Google Calendar**: Programar eventos, recibir notificaciones, gestionar calendarios
 
-1. Adjuntar una captura de pantalla del canvas con todos los nodos conectados.
-2. Adjuntar una captura de pantalla de la salida del nodo "Retrieval QA Chain" mostrando la respuesta generada.
-3. Responder a las siguientes preguntas:
-   - ¿Qué ventajas ofrece un sistema RAG en comparación con usar directamente un LLM?
-   - ¿Cómo podrías mejorar este sistema RAG para manejar documentos más extensos o complejos?
-   - ¿Qué otros tipos de Vector Stores podrías utilizar en un entorno de producción?
+**Caso de uso**: Automatizar el envío de informes semanales generados por IA a partir de datos en Google Sheets.
 
-## Conceptos clave
+### Airtable
 
-- **RAG (Retrieval-Augmented Generation)**: Qué es y cómo combina la recuperación de información con la generación de texto.
-- **Vector Stores**: Cómo funcionan las bases de datos vectoriales para almacenar y recuperar información semántica.
-- **Embeddings**: Qué son las representaciones vectoriales de texto y cómo se utilizan en sistemas RAG.
-- **Chunking**: Por qué es importante dividir documentos en fragmentos más pequeños para su procesamiento.
+Airtable es una plataforma de base de datos flexible y visual que se integra perfectamente con n8n:
 
-## Recursos adicionales
+- **Operaciones**: Crear, leer, actualizar y eliminar registros
+- **Triggers**: Detectar nuevos o modificados registros
+- **Filtros**: Buscar registros que cumplan criterios específicos
 
-- [Documentación de n8n sobre nodos de Vector Store](https://docs.n8n.io/integrations/builtin/cluster-nodes/root-nodes/n8n-nodes-langchain.vectorstore/)
-- [Guía de RAG en LangChain](https://js.langchain.com/docs/modules/chains/popular/vector_db_qa)
-- [Mejores prácticas para sistemas RAG](https://www.pinecone.io/learn/retrieval-augmented-generation/)
-- [Tipos de Vector Stores disponibles](https://docs.langchain.com/docs/integrations/vectorstores/) 
+**Caso de uso**: Almacenar y categorizar automáticamente información extraída por un agente de IA.
+
+### Telegram
+
+La integración con Telegram permite crear bots y automatizaciones para esta plataforma de mensajería:
+
+- **Recibir mensajes**: Capturar mensajes enviados al bot
+- **Enviar mensajes**: Texto, imágenes, documentos, etc.
+- **Comandos**: Responder a comandos específicos
+- **Grupos**: Gestionar conversaciones grupales
+
+**Caso de uso**: Crear un bot de Telegram que utilice IA para responder preguntas o realizar tareas específicas.
+
+### Slack
+
+Similar a Telegram, la integración con Slack permite automatizar comunicaciones en este popular servicio de mensajería empresarial:
+
+- **Mensajes**: Enviar y recibir mensajes en canales o directos
+- **Reacciones**: Detectar y añadir reacciones a mensajes
+- **Archivos**: Compartir y gestionar archivos
+- **Usuarios**: Gestionar información de usuarios
+
+**Caso de uso**: Crear un asistente de IA para equipos que responda a consultas en canales de Slack.
+
+### Notion
+
+Notion es una herramienta todo-en-uno para notas, bases de datos y gestión de proyectos:
+
+- **Páginas**: Crear, leer y actualizar páginas
+- **Bases de datos**: Gestionar registros en bases de datos
+- **Búsqueda**: Encontrar contenido específico
+- **Comentarios**: Añadir y gestionar comentarios
+
+**Caso de uso**: Crear un sistema que documente automáticamente información generada por IA en páginas de Notion.
+
+## Integraciones para herramientas de IA
+
+Algunas integraciones In App son especialmente útiles cuando se combinan con nodos de IA:
+
+1. **Google Sheets**: Para almacenar y recuperar datos que alimentan modelos de IA
+2. **Notion**: Para documentar resultados de análisis de IA
+3. **Gmail**: Para procesar correos con IA y enviar respuestas inteligentes
+4. **Telegram/Slack**: Para crear interfaces conversacionales con agentes de IA
+5. **Airtable**: Para crear bases de conocimiento que pueden ser consultadas por sistemas RAG
+
+Estas integraciones permiten que nuestros modelos de IA interactúen con el mundo real, recibiendo información y realizando acciones concretas.
+
+## Similaridad entre nodos In App y herramientas para agentes
+
+Existe una interesante similitud conceptual entre los nodos In App y las herramientas que pueden utilizar los agentes de IA:
+
+| Nodos In App | Herramientas para Agentes |
+|--------------|---------------------------|
+| Realizan acciones específicas en aplicaciones externas | Realizan acciones específicas cuando el agente las invoca |
+| Tienen parámetros configurables | Tienen parámetros que el agente debe proporcionar |
+| Devuelven resultados estructurados | Devuelven resultados que el agente puede interpretar |
+| Se conectan a servicios externos | Amplían las capacidades del agente más allá del modelo de lenguaje |
+
+Esta similitud no es casualidad: ambos conceptos buscan extender las capacidades básicas del sistema (n8n o el modelo de lenguaje) permitiéndole interactuar con servicios externos.
+
+La principal diferencia es que los nodos In App son configurados y conectados manualmente por el usuario, mientras que las herramientas para agentes son seleccionadas y utilizadas dinámicamente por el propio agente.
+
+
+## Desafío del episodio 12
+
+Para poner en práctica lo aprendido, te invitamos a completar el [desafío del episodio 12](desafio-episodio-12.md), donde crearás un asistente inteligente que combine IA con integraciones de aplicaciones para resolver un problema práctico. 

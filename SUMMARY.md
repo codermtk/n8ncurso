@@ -34,24 +34,21 @@
 * [Episodio 8](parte-8/episodio-8.md)
 * [Desafío del Episodio 8](parte-8/desafio-episodio-8.md)
 
-### Parte 9: Juntando todo a la vez
+### Parte 9: Nodos de IA 1: Intro y Chains
 * [Episodio 9](parte-9/episodio-9.md)
 * [Desafío del Episodio 9](parte-9/desafio-episodio-9.md)
 
-### Parte 10: Nodos de IA 1: Intro y Chains
+### Parte 10: Nodos de IA 2: Agentes, Intro Memoria, Intro Herramientas
 * [Episodio 10](parte-10/episodio-10.md)
 * [Desafío del Episodio 10](parte-10/desafio-episodio-10.md)
 
-### Parte 11: Nodos de IA 2: Agentes, Intro Memoria, Intro Herramientas
+### Parte 11: Nodos de IA 3: RAG y Vector Stores
 * [Episodio 11](parte-11/episodio-11.md)
 * [Desafío del Episodio 11](parte-11/desafio-episodio-11.md)
 
-### Parte 12: Nodos de IA 3: RAG y Vector Stores
+### Parte 12: Nodos In App
 * [Episodio 12](parte-12/episodio-12.md)
 * [Desafío del Episodio 12](parte-12/desafio-episodio-12.md)
-
-### Parte 13: Nodos In App
-* [Episodio 13](parte-13/episodio-13.md)
 
 ## Recursos
 

@@ -4,7 +4,6 @@
 - [Descripción del desafío](#descripción-del-desafío)
 - [Objetivos](#objetivos)
 - [Extensión del desafío (opcional)](#extensión-del-desafío-opcional)
-- [Entrega](#entrega)
 - [Recursos adicionales](#recursos-adicionales)
 
 ## Descripción del desafío
