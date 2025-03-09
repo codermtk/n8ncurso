@@ -1,79 +1,76 @@
 # Desafío del Episodio 8
 
-## Desafío
+## Contenido
+- [Descripción del desafío](#descripción-del-desafío)
+- [Objetivos](#objetivos)
+- [Recursos necesarios](#recursos-necesarios)
+- [Entrega](#entrega)
+- [Recursos adicionales](#recursos-adicionales)
 
-Construye un workflow que use un nodo "HTTP Request" para obtener datos de una API pública como https://jsonplaceholder.typicode.com/posts. Luego, usa un nodo "Set" para extraer el título del primer post y muéstralo en un nodo "Log".
+## Descripción del desafío
 
-## Instrucciones
+En este desafío, crearás un workflow que utilice la API de Agify para predecir la edad de una persona basándose en su nombre. Luego, compararás esta predicción con la edad real de la persona y, dependiendo del resultado, el flujo tomará diferentes caminos. Este desafío te permitirá aplicar los conceptos aprendidos sobre el nodo HTTP Request, manipulación de strings y control de flujo en n8n.
 
-### Paso 1: Crear un nuevo workflow
+![Desafío 8](../images/parte8/desafio8.png)
 
-1. Accede a la interfaz de n8n en tu navegador (http://localhost:5678).
-2. Crea un nuevo workflow y nómbralo "Consumo de API".
+## Objetivos
 
-### Paso 2: Configurar el nodo "Manual Trigger"
+Tu workflow debe cumplir con los siguientes objetivos:
 
-1. Añade un nodo "Manual Trigger" al canvas.
-2. No es necesario configurar nada en este nodo, ya que simplemente iniciará el workflow manualmente.
+1. Utilizar un nodo "Chat Input" para iniciar el workflow y recibir un texto con el formato: `nombre, edad`
+   - Ejemplo: `Juan, 35`
 
-### Paso 3: Configurar el nodo "HTTP Request"
+2. Utilizar nodos "Set" con expresiones para extraer el nombre y la edad del texto de entrada:
+   - Para extraer la edad (último valor después de la coma):
+     ```
+     {{$json.chatInput.split(",").last()}}
+     ```
+   - Para extraer el nombre (primer valor antes de la coma):
+     ```
+     {{$json.chatInput.split(",").first()}}
+     ```
 
-1. Añade un nodo "HTTP Request" después del "Manual Trigger".
-2. Configura el nodo con los siguientes parámetros:
-   - Method: `GET`
-   - URL: `https://jsonplaceholder.typicode.com/posts`
-   - Authentication: `None`
-   - Headers: Deja los valores predeterminados
-   - Query Parameters: Deja en blanco
-   - Response Format: `JSON`
-3. Guarda la configuración del nodo.
+3. Utilizar un nodo "HTTP Request" para consultar la API de Agify y obtener la predicción de edad:
+   - Método: `GET`
+   - URL: `https://api.agify.io`
+   - Parámetros de consulta: `name` con el valor del nombre extraído
 
-### Paso 4: Configurar el nodo "Set" para extraer el título
+4. Utilizar un nodo "Set" para extraer la edad predicha de la respuesta de la API y calcular la diferencia con la edad real
 
-1. Añade un nodo "Set" después del nodo "HTTP Request".
-2. En la configuración del nodo "Set", haz clic en "Add Value" para añadir un nuevo campo.
-3. Configura el campo con:
-   - Name: `titulo_primer_post`
-   - Type: `String`
-   - Value: `{{$json[0].title}}`
-4. Guarda la configuración del nodo.
+5. Utilizar un nodo "Switch" para dirigir el flujo a diferentes ramas según la comparación:
+   - Si la edad predicha es mayor que la edad real: rama "Por encima"
+   - Si la edad predicha es igual a la edad real: rama "Exacta"
+   - Si la edad predicha es menor que la edad real: rama "Por debajo"
 
-### Paso 5: Configurar el nodo "Log"
+6. Utilizar un nodo "Set" en cada rama para añadir un mensaje personalizado:
+   - Rama "Por encima": "La predicción se ha pasado por X años"
+   - Rama "Exacta": "¡La predicción ha acertado exactamente!"
+   - Rama "Por debajo": "La predicción se ha quedado corta por X años"
 
-1. Añade un nodo "Log" después del nodo "Set".
-2. En la configuración del nodo "Log", configura los siguientes parámetros:
-   - Log Level: `Info`
-   - Log Message: `El título del primer post es: {{$json.titulo_primer_post}}`
-3. Guarda la configuración del nodo.
+7. Utilizar un nodo "Merge" para reunir todas las ramas
 
-### Paso 6: Ejecutar y verificar el workflow
+## Recursos necesarios
 
-1. Haz clic en "Execute Workflow" para ejecutar el workflow.
-2. Una vez completada la ejecución, haz clic en cada nodo para ver cómo se transforman los datos a lo largo del workflow.
-3. Verifica que el nodo "Log" muestre el título del primer post correctamente.
+- **API de Agify**: https://api.agify.io
+  - Esta API predice la edad de una persona basándose en su nombre
+  - No requiere autenticación
+  - Parámetro requerido: `name` (el nombre de la persona)
+  - Ejemplo de URL: `https://api.agify.io?name=Juan`
+  - Ejemplo de respuesta:
+    ```json
+    {
+      "name": "Juan",
+      "age": 42,
+      "count": 25886
+    }
+    ```
 
-## Entrega
-
-Para completar este desafío, debes:
-
-1. Adjuntar una captura de pantalla del canvas con todos los nodos conectados.
-2. Adjuntar una captura de pantalla de la respuesta del nodo "HTTP Request" mostrando los datos obtenidos.
-3. Adjuntar una captura de pantalla del mensaje del nodo "Log" mostrando el título extraído.
-4. Responder a las siguientes preguntas:
-   - ¿Qué otros métodos HTTP podrías utilizar con el nodo "HTTP Request"?
-   - ¿Cómo podrías modificar este workflow para obtener y mostrar los títulos de los primeros 5 posts?
-   - ¿Qué otras APIs públicas podrías utilizar con este tipo de workflow?
-
-## Conceptos clave
-
-- **APIs REST**: Cómo consumir datos de APIs externas.
-- **Nodo HTTP Request**: Cómo realizar solicitudes HTTP desde n8n.
-- **Manipulación de respuestas JSON**: Cómo extraer y procesar datos de respuestas JSON.
-- **Acceso a propiedades anidadas**: Cómo acceder a propiedades específicas dentro de objetos JSON.
 
 ## Recursos adicionales
 
+- [Documentación de la API de Agify](https://agify.io/)
 - [Documentación del nodo HTTP Request](https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.httprequest/)
-- [JSONPlaceholder - API de prueba gratuita](https://jsonplaceholder.typicode.com/)
-- [Lista de APIs públicas](https://github.com/public-apis/public-apis)
+- [Documentación del nodo Set](https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.set/)
+- [Documentación del nodo Switch](https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.switch/)
+- [Documentación del nodo Merge](https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.merge/)
 - [Guía de expresiones en n8n](https://docs.n8n.io/code-examples/expressions/) 
