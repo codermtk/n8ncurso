@@ -4,13 +4,32 @@ Bienvenido al curso de n8n para Inno 8n. Este curso está diseñado para ayudart
 
 ## Acerca de este curso
 
-En este curso, aprenderás desde cómo instalar n8n hasta cómo crear flujos de trabajo complejos con inteligencia artificial. Cada sección incluye desafíos prácticos para reforzar tu aprendizaje.
+En este curso, aprenderás desde cómo instalar n8n hasta cómo crear flujos de trabajo complejos con inteligencia artificial. Cada episodio incluye contenido teórico y práctico, complementado con desafíos para reforzar tu aprendizaje.
 
 ## Estructura del curso
 
-El curso comienza con una introducción conceptual y luego continúa con una serie de desafíos prácticos:
+El curso está organizado en episodios y desafíos:
 
-- **Introducción**: Comparativa entre n8n, Make y Zapier
+### Episodios
+Los episodios contienen la información teórica y técnica sobre cada tema:
+
+- **Episodio 1**: Introducción a n8n vs Make vs Zapier
+- **Episodio 2**: Cómo instalar n8n
+- **Episodio 3**: Introducción a la interfaz de usuario de n8n
+- **Episodio 4**: Conceptos Fundamentales y Fundamentos de Construcción n8n
+- **Episodio 5**: Profundizando en los Triggers
+- **Episodio 6**: Profundizando en nodos de Data
+- **Episodio 7**: Nodos de Lógica (Flow)
+- **Episodio 8**: Nodos Core
+- **Episodio 9**: Juntando todo a la vez
+- **Episodio 10**: Nodos de IA 1: Intro y Chains
+- **Episodio 11**: Nodos de IA 2: Agentes, Intro Memoria, Intro Herramientas
+- **Episodio 12**: Nodos de IA 3: RAG y Vector Stores
+- **Episodio 13**: Nodos In App
+
+### Desafíos
+Los desafíos son ejercicios prácticos para aplicar lo aprendido:
+
 - **Desafío 1**: Instalación de n8n
 - **Desafío 2**: Primeros pasos con la interfaz de n8n
 - **Desafío 3**: Creación de un workflow básico
@@ -23,8 +42,6 @@ El curso comienza con una introducción conceptual y luego continúa con una ser
 - **Desafío 10**: Agente matemático
 - **Desafío 11**: Sistema RAG para energías renovables
 - **Desafío 12**: Integración con Google Sheets
-
-Selecciona un desafío del menú lateral para comenzar.
 
 ## ¿Qué es n8n?
 

@@ -49,10 +49,10 @@ Inician un workflow cuando ocurre un evento específico:
 ### Regular Nodes
 
 Procesan datos y realizan acciones:
-- **HTTP Request**: Realiza solicitudes HTTP a APIs externas
 - **Set**: Define valores estáticos o dinámicos
 - **Function**: Ejecuta código JavaScript personalizado
 - **IF**: Implementa lógica condicional
+- **Switch**: Implementa múltiples condiciones
 
 ### Core Nodes
 
@@ -80,6 +80,22 @@ Para ejecutar un workflow:
 2. Observa cómo los nodos cambian de color a medida que se ejecutan
 3. Haz clic en cualquier nodo para ver los datos que pasan por él
 4. Revisa la pestaña "Executions" para ver el historial de ejecuciones
+
+## Creación de un workflow simple
+
+Para familiarizarte con la interfaz, puedes crear un workflow simple que genere un objeto JSON con tu información personal:
+
+1. Crea un nuevo workflow
+2. Añade un nodo "Manual Trigger"
+3. Añade un nodo "Set" después del trigger
+4. Configura el nodo "Set" para crear un objeto con tu nombre y edad:
+   ```json
+   {
+     "nombre": "Tu Nombre",
+     "edad": 25
+   }
+   ```
+5. Ejecuta el workflow y observa el resultado
 
 ## Recursos
 
