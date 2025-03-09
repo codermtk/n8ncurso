@@ -4,44 +4,61 @@ Bienvenido al curso de n8n para Inno 8n. Este curso está diseñado para ayudart
 
 ## Acerca de este curso
 
-En este curso, aprenderás desde cómo instalar n8n hasta cómo crear flujos de trabajo complejos con inteligencia artificial. Cada episodio incluye contenido teórico y práctico, complementado con desafíos para reforzar tu aprendizaje.
+En este curso, aprenderás desde cómo instalar n8n hasta cómo crear flujos de trabajo complejos con inteligencia artificial. Cada parte incluye contenido teórico y práctico, complementado con desafíos para reforzar tu aprendizaje.
 
 ## Estructura del curso
 
-El curso está organizado en episodios y desafíos:
+El curso está organizado en partes, cada una con un episodio y su desafío correspondiente:
 
-### Episodios
-Los episodios contienen la información teórica y técnica sobre cada tema:
+### Parte 1: Introducción a n8n vs Make vs Zapier
+- **Episodio 1**: Conceptos básicos y comparativa de plataformas
 
-- **Episodio 1**: Introducción a n8n vs Make vs Zapier
-- **Episodio 2**: Cómo instalar n8n
-- **Episodio 3**: Introducción a la interfaz de usuario de n8n
-- **Episodio 4**: Conceptos Fundamentales y Fundamentos de Construcción n8n
-- **Episodio 5**: Profundizando en los Triggers
-- **Episodio 6**: Profundizando en nodos de Data
-- **Episodio 7**: Nodos de Lógica (Flow)
-- **Episodio 8**: Nodos Core
-- **Episodio 9**: Juntando todo a la vez
-- **Episodio 10**: Nodos de IA 1: Intro y Chains
-- **Episodio 11**: Nodos de IA 2: Agentes, Intro Memoria, Intro Herramientas
-- **Episodio 12**: Nodos de IA 3: RAG y Vector Stores
-- **Episodio 13**: Nodos In App
+### Parte 2: Cómo instalar n8n
+- **Episodio 2**: Métodos de instalación y configuración inicial
 
-### Desafíos
-Los desafíos son ejercicios prácticos para aplicar lo aprendido:
+### Parte 3: Introducción a la interfaz de usuario de n8n
+- **Episodio 3**: Navegación y componentes principales
+- **Desafío del Episodio 3**: Creación de un workflow básico
 
-- **Desafío 1**: Instalación de n8n
-- **Desafío 2**: Primeros pasos con la interfaz de n8n
-- **Desafío 3**: Creación de un workflow básico
-- **Desafío 4**: Trabajando con webhooks
-- **Desafío 5**: Manipulación de datos
-- **Desafío 6**: Flujos condicionales
-- **Desafío 7**: Consumo de APIs
-- **Desafío 8**: Monitoreo de temperatura
-- **Desafío 9**: Resumen de textos con IA
-- **Desafío 10**: Agente matemático
-- **Desafío 11**: Sistema RAG para energías renovables
-- **Desafío 12**: Integración con Google Sheets
+### Parte 4: Conceptos Fundamentales y Fundamentos de Construcción n8n
+- **Episodio 4**: Arquitectura y principios de diseño
+- **Desafío del Episodio 4**: Trabajando con webhooks
+
+### Parte 5: Profundizando en los Triggers
+- **Episodio 5**: Tipos de triggers y su configuración
+- **Desafío del Episodio 5**: Manipulación de datos
+
+### Parte 6: Profundizando en nodos de Data
+- **Episodio 6**: Transformación y manipulación de datos
+- **Desafío del Episodio 6**: Flujos condicionales
+
+### Parte 7: Nodos de Lógica (Flow)
+- **Episodio 7**: Control del flujo de ejecución
+- **Desafío del Episodio 7**: Consumo de APIs
+
+### Parte 8: Nodos Core
+- **Episodio 8**: Funcionalidades esenciales
+- **Desafío del Episodio 8**: Monitoreo de temperatura
+
+### Parte 9: Juntando todo a la vez
+- **Episodio 9**: Integración de componentes
+- **Desafío del Episodio 9**: Resumen de textos con IA
+
+### Parte 10: Nodos de IA 1: Intro y Chains
+- **Episodio 10**: Fundamentos de IA en n8n
+- **Desafío del Episodio 10**: Agente matemático
+
+### Parte 11: Nodos de IA 2: Agentes, Intro Memoria, Intro Herramientas
+- **Episodio 11**: Agentes inteligentes y memoria
+- **Desafío del Episodio 11**: Sistema RAG para energías renovables
+
+### Parte 12: Nodos de IA 3: RAG y Vector Stores
+- **Episodio 12**: Recuperación aumentada de generación
+- **Desafío del Episodio 12**: Integración con Google Sheets
+
+### Parte 13: Nodos In App
+- **Episodio 13**: Integración con aplicaciones internas
+- **Desafío del Episodio 13**: Proyecto final
 
 ## ¿Qué es n8n?
 

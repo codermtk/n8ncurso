@@ -1,7 +1,5 @@
 # Desafío 3: Creación de un workflow básico
 
-![Workflow básico](https://docs.n8n.io/assets/img/workflow-editor.c5c1bc1e.png)
-
 ## Objetivo
 
 Crear tu primer workflow con un trigger manual y ejecutarlo utilizando el botón de Test Workflow.

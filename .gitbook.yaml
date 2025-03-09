@@ -3,29 +3,27 @@ structure:
   readme: README.md
   summary: SUMMARY.md
 redirects:
-  episodio-1: episodios/episodio-1.md
-  episodio-2: episodios/episodio-2.md
-  episodio-3: episodios/episodio-3.md
-  episodio-4: episodios/episodio-4.md
-  episodio-5: episodios/episodio-5.md
-  episodio-6: episodios/episodio-6.md
-  episodio-7: episodios/episodio-7.md
-  episodio-8: episodios/episodio-8.md
-  episodio-9: episodios/episodio-9.md
-  episodio-10: episodios/episodio-10.md
-  episodio-11: episodios/episodio-11.md
-  episodio-12: episodios/episodio-12.md
-  episodio-13: episodios/episodio-13.md
-  desafio-1: desafios/desafio-1.md
-  desafio-2: desafios/desafio-2.md
-  desafio-3: desafios/desafio-3.md
-  desafio-4: desafios/desafio-4.md
-  desafio-5: desafios/desafio-5.md
-  desafio-6: desafios/desafio-6.md
-  desafio-7: desafios/desafio-7.md
-  desafio-8: desafios/desafio-8.md
-  desafio-9: desafios/desafio-9.md
-  desafio-10: desafios/desafio-10.md
-  desafio-11: desafios/desafio-11.md
-  desafio-12: desafios/desafio-12.md
+  episodio-1: parte-1/episodio-1.md
+  episodio-2: parte-2/episodio-2.md
+  episodio-3: parte-3/episodio-3.md
+  episodio-4: parte-4/episodio-4.md
+  episodio-5: parte-5/episodio-5.md
+  episodio-6: parte-6/episodio-6.md
+  episodio-7: parte-7/episodio-7.md
+  episodio-8: parte-8/episodio-8.md
+  episodio-9: parte-9/episodio-9.md
+  episodio-10: parte-10/episodio-10.md
+  episodio-11: parte-11/episodio-11.md
+  episodio-12: parte-12/episodio-12.md
+  episodio-13: parte-13/episodio-13.md
+  desafio-episodio-3: parte-3/desafio-episodio-3.md
+  desafio-episodio-4: parte-4/desafio-episodio-4.md
+  desafio-episodio-5: parte-5/desafio-episodio-5.md
+  desafio-episodio-6: parte-6/desafio-episodio-6.md
+  desafio-episodio-7: parte-7/desafio-episodio-7.md
+  desafio-episodio-8: parte-8/desafio-episodio-8.md
+  desafio-episodio-9: parte-9/desafio-episodio-9.md
+  desafio-episodio-10: parte-10/desafio-episodio-10.md
+  desafio-episodio-11: parte-11/desafio-episodio-11.md
+  desafio-episodio-12: parte-12/desafio-episodio-12.md
   recursos: recursos/recursos-adicionales.md 
