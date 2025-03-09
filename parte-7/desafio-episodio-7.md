@@ -1,83 +1,48 @@
 # Desafío del Episodio 7
 
-## Desafío
+## Contenido
+- [Descripción del desafío](#descripción-del-desafío)
+- [Objetivos](#objetivos)
+- [Datos de ejemplo](#datos-de-ejemplo)
+- [Entrega](#entrega)
+- [Recursos adicionales](#recursos-adicionales)
 
-Crea un workflow que simule un sistema de entradas de cine. Usa un nodo "Set" para definir la edad de una persona (por ejemplo, {"edad": 16}) y luego usa un nodo "If" para determinar si puede ver una película clasificada para mayores de 18 años. Si es menor, muestra un mensaje de "Acceso denegado"; si es mayor, "Acceso permitido".
+## Descripción del desafío
 
-## Instrucciones
+En este desafío, crearás un workflow que procese un archivo CSV con notas de estudiantes, los clasifique en diferentes categorías según su calificación y extraiga información específica sobre los mejores y peores estudiantes. Deberás aplicar los conceptos aprendidos sobre operadores lógicos y nodos de control de flujo.
 
-### Paso 1: Crear un nuevo workflow
+![Desafío 7](../images/parte7/notas.png)
 
-1. Accede a la interfaz de n8n en tu navegador (http://localhost:5678).
-2. Crea un nuevo workflow y nómbralo "Sistema de Entradas de Cine".
+## Objetivos
 
-### Paso 2: Configurar el nodo "Manual Trigger"
+Tu workflow debe cumplir con los siguientes objetivos:
 
-1. Añade un nodo "Manual Trigger" al canvas.
-2. No es necesario configurar nada en este nodo, ya que simplemente iniciará el workflow manualmente.
+1. Crear un formulario que permita subir un archivo CSV con datos de estudiantes (nombre, apellido y nota) (el archivo se encuentra dentro de skool)
 
-### Paso 3: Configurar el nodo "Set" para definir la edad
+2. Procesar el archivo CSV para extraer los datos, asegurarte de que la nota se trata como un valor numérico y de que no haya alumnos sin puntuar en los datos con los que se trabaja
 
-1. Añade un nodo "Set" después del "Manual Trigger".
-2. En la configuración del nodo "Set", haz clic en "Add Value" para añadir un nuevo campo.
-3. Configura el campo con:
-   - Name: `edad`
-   - Type: `Number`
-   - Value: `16` (puedes cambiar este valor para probar diferentes escenarios)
-4. Guarda la configuración del nodo.
+3. Clasificar a los estudiantes en las siguientes categorías según su nota:
+   - **Suspenso**: Nota < 5
+   - **Suficiente**: Nota >= 5 y < 6
+   - **Bien**: Nota >= 6 y < 7
+   - **Notable**: Nota >= 7 y < 9
+   - **Sobresaliente**: Nota >= 9 y <= 10
 
-### Paso 4: Configurar el nodo "If"
+4. Para cada categoría, crear una rama separada en el workflow
 
-1. Añade un nodo "If" después del nodo "Set".
-2. En la configuración del nodo "If", configura los siguientes parámetros:
-   - Value 1: `{{$json.edad}}`
-   - Operation: `Larger or Equal`
-   - Value 2: `18`
-3. Guarda la configuración del nodo.
+5. Dentro del grupo de "Sobresalientes", identificar a los tres estudiantes con las mejores notas
 
-### Paso 5: Configurar los nodos "Set" para las respuestas
+6. Dentro del grupo de "Suspensos", identificar a los tres estudiantes con las peores notas
 
-1. Añade un nodo "Set" conectado a la salida "true" del nodo "If".
-2. Configura este nodo con:
-   - Name: `mensaje`
-   - Type: `String`
-   - Value: `Acceso permitido`
-3. Guarda la configuración del nodo.
 
-4. Añade otro nodo "Set" conectado a la salida "false" del nodo "If".
-5. Configura este nodo con:
-   - Name: `mensaje`
-   - Type: `String`
-   - Value: `Acceso denegado`
-6. Guarda la configuración del nodo.
+## Datos 
 
-### Paso 6: Ejecutar y verificar el workflow
-
-1. Haz clic en "Execute Workflow" para ejecutar el workflow.
-2. Una vez completada la ejecución, observa qué camino ha tomado el flujo de datos.
-3. Verifica que el mensaje generado sea el correcto según la edad definida.
-4. Cambia el valor de la edad en el primer nodo "Set" y ejecuta el workflow nuevamente para ver cómo cambia el resultado.
-
-## Entrega
-
-Para completar este desafío, debes:
-
-1. Adjuntar una captura de pantalla del canvas con todos los nodos conectados.
-2. Adjuntar dos capturas de pantalla mostrando los resultados con diferentes edades (una menor de 18 y otra mayor o igual a 18).
-3. Responder a las siguientes preguntas:
-   - ¿Qué otros operadores de comparación ofrece el nodo "If"?
-   - ¿Cómo podrías modificar este workflow para incluir una categoría adicional para películas clasificadas para mayores de 13 años?
-   - ¿Qué otros nodos de lógica ofrece n8n y para qué podrían ser útiles?
-
-## Conceptos clave
-
-- **Nodo If**: Cómo implementar lógica condicional en tus workflows.
-- **Ramificación de flujos**: Cómo los datos pueden seguir diferentes caminos según ciertas condiciones.
-- **Operadores de comparación**: Diferentes formas de comparar valores en n8n.
-- **Toma de decisiones automatizada**: Cómo automatizar decisiones basadas en datos.
+Los datos se encuentran dentro de la comunidad de Skool
 
 ## Recursos adicionales
 
-- [Documentación del nodo If](https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.if/)
-- [Guía de nodos de lógica en n8n](https://docs.n8n.io/workflows/flow-logic/)
-- [Patrones de diseño de workflows](https://docs.n8n.io/workflows/best-practices/) 
+- [Documentación del nodo Filter](https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.filter/)
+- [Documentación del nodo Switch](https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.switch/)
+- [Documentación del nodo Sort](https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.sort/)
+- [Documentación del nodo Limit](https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.limit/)
+- [Documentación del nodo Merge](https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.merge/) 
