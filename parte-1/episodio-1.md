@@ -1,5 +1,17 @@
 # Episodio 1: Introducción a n8n y comparativa con Zapier y Make
 
+## Contenido del episodio
+- [¿Qué es automatizar?](#qué-es-automatizar)
+- [¿Qué es n8n?](#qué-es-n8n)
+- [Razones para usar n8n sobre Zapier o Make](#razones-para-usar-n8n-sobre-zapier-o-make)
+  - [Control total sobre tus datos](#1-control-total-sobre-tus-datos)
+  - [Sin límites de ejecuciones](#2-sin-límites-de-ejecuciones)
+  - [Más barato](#3-más-barato)
+  - [Personalización avanzada](#4-personalización-avanzada)
+  - [Comunidad activa y evolución más rápida](#5-comunidad-activa-y-evolución-más-rápida)
+- [Conclusión](#conclusión)
+- [Recursos](#recursos)
+
 ## ¿Qué es automatizar?
 
 La automatización de procesos consiste en utilizar tecnología para ejecutar tareas repetitivas sin intervención humana. En el contexto digital, esto significa crear flujos de trabajo que conecten diferentes aplicaciones y servicios para que trabajen juntos de forma automática, ahorrando tiempo, reduciendo errores y permitiendo a las personas centrarse en tareas de mayor valor.
