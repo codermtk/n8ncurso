@@ -10,7 +10,7 @@
 
 En este desafío, crearás un workflow que procese un archivo CSV con notas de estudiantes, los clasifique en diferentes categorías según su calificación y extraiga información específica sobre los mejores y peores estudiantes. Deberás aplicar los conceptos aprendidos sobre operadores lógicos y nodos de control de flujo.
 
-![Desafío 7](../images/parte7/notas.png)
+![Desafío 7](../images/parte7/notas.jpg)
 
 ## Objetivos
 

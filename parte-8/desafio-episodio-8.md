@@ -10,7 +10,6 @@
 
 En este desafío, crearás un workflow que utilice la API de Agify para predecir la edad de una persona basándose en su nombre. Luego, compararás esta predicción con la edad real de la persona y, dependiendo del resultado, el flujo tomará diferentes caminos. Este desafío te permitirá aplicar los conceptos aprendidos sobre el nodo HTTP Request, manipulación de strings y control de flujo en n8n.
 
-![Desafío 8](../images/parte8/desafio8.png)
 
 ## Objetivos
 

@@ -142,8 +142,6 @@ El nodo **Wait** permite pausar la ejecución de un workflow durante un tiempo d
 
 Los nodos de control de flujo utilizan operadores de comparación para evaluar condiciones. Estos operadores varían según el tipo de dato que estemos comparando.
 
-![Operadores de comparación](../images/parte7/operadores-logicos.png)
-
 ### Operadores para strings
 
 - **is equal to**: Compara si dos strings son exactamente iguales
